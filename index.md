@@ -3,7 +3,7 @@
 **Effective Date:** May 29, 2026
 **App Name:** RoosterBeat
 **Developer:** Grey
-**Contact:** s.v.torovus@gmail.com
+**Contact:** [s.v.torovus@gmail.com](mailto:s.v.torovus@gmail.com)
 
 This Privacy Policy explains how RoosterBeat handles data when you use the mobile app and the Wear OS companion app.
 
@@ -29,7 +29,6 @@ The commands exchanged between the phone and watch may include actions such as:
 
 * Play/Pause
 * Next track
-* Previous track
 * Gesture settings
 * Calibration settings
 
@@ -51,7 +50,6 @@ This may include sending standard media commands such as:
 * Pause
 * Play/Pause toggle
 * Next track
-* Previous track
 
 The app does not access, collect, or store your music library, playlists, listening history, or account information from music services.
 
@@ -110,4 +108,4 @@ This Privacy Policy may be updated from time to time. Any changes will be reflec
 
 If you have any questions about this Privacy Policy, contact:
 
-s.v.torovus@gmail.com
+[s.v.torovus@gmail.com](mailto:s.v.torovus@gmail.com)
