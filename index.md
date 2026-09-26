@@ -1,111 +1,104 @@
-# Privacy Policy
+# Політика конфіденційності RoosterBeat / Privacy Policy for RoosterBeat
 
-**Effective Date:** May 29, 2026
-**App Name:** RoosterBeat
-**Developer:** Grey
-**Contact:** [s.v.torovus@gmail.com](mailto:s.v.torovus@gmail.com)
+**Дата набрання чинності / Effective Date:** 29 травня 2026 р. / May 29, 2026  
+**Назва додатка / App Name:** RoosterBeat  
+**Ідентифікатор пакета / Package Name:** `ua.grey.roosterbeat`  
+**Розробник / Developer:** Grey  
+**E-mail:** s.v.torovus@gmail.com  
+**Телефон / Phone:** +380509189797  
 
-This Privacy Policy explains how RoosterBeat handles data when you use the mobile app and the Wear OS companion app.
+Цей документ є об'єднаною Політикою конфіденційності, яка описує всі аспекти обробки даних у мобільному додатку RoosterBeat та супутньому додатку для смарт-годинників Wear OS, включаючи розширені розкриття (Prominent Disclosures) для системних служб згідно з вимогами Google Play Console.
 
-## 1. General Information
+---
 
-RoosterBeat is an Android and Wear OS application that allows users to control music playback on their phone using gestures from a Wear OS smartwatch.
+## 🇺🇦 Політика конфіденційності (Українська)
 
-The app is designed to work locally between your phone and smartwatch. It does not require an account, does not sell personal data, and does not transmit raw sensor data to external servers.
+### 1. Загальна інформація
+**RoosterBeat** — це комплекс додатків для Android та Wear OS, що дозволяє користувачеві керувати відтворенням музики на смартфоні за допомогою жестів зап'ястя та фізичного безеля смарт-годинника. Додаток розроблено для повністю локальної взаємодії між вашим смартфоном та годинником. Додаток:
+- **НЕ вимагає створення облікового запису**.
+- **НЕ збирає, НЕ продає та НЕ передає персональні дані**.
+- **НЕ надсилає сирі дані датчиків чи метрики використання на зовнішні сервери**.
 
-## 2. Data Used by the App
+### 2. Дані датчиків руху
+Додаток для Wear OS використовує апаратні датчики руху смарт-годинника (акселерометр, гіроскоп, вектор обертання, датчик гравітації) виключно для розпізнавання жестів користувача (поворот зап'ястя, подвійний тап).
+- **Обробка даних**: Усі показники датчиків обробляються локально у реальному часі в оперативній пам'яті (RAM) пристрою та негайно видаляються після оцінки жесту.
+- **Збереження та передача**: Сирі дані датчиків ніколи не записуються у довгострокові файли та не надсилаються на жодні зовнішні сервери.
 
-The Wear OS app may use smartwatch motion sensors, such as the accelerometer, gyroscope, rotation vector, or gravity sensor, only for detecting user gestures.
+### 3. Взаємодія між телефоном та годинником
+Смартфон та годинник Wear OS обмінюються даними виключно для забезпечення функцій керування відтворенням та синхронізації налаштувань через локальний **Wearable Data Layer API (Google Play Services)**.
+Команди та дані, якими обмінюються пристрої, включають:
+- Команди відтворення: Відтворення/Пауза, Наступний трек, Перемикання стану.
+- Команди безеля: Зміна рівнів гучності на смартфоні при обертанні фізичного безеля.
+- Налаштування жестів та калібрування.
+- Перевірка стану встановлення супутнього додатка.
 
-These sensor readings are used locally on the smartwatch to recognize gestures such as music control actions.
+Уся передача здійснюється зашифрованим локальним каналом Google Play Services без виходу в мережу Інтернет.
 
-Raw sensor data is not sent to any server.
+### 4. Дані калібрування жестів
+Додаток дозволяє зберігати локальні налаштування калібрування жестів (чутливість, порогові значення, часові інтервали, профілі повороту кисті та подвійного тапу). Ці дані зберігаються виключно локально у системному сховищі `SharedPreferences` вашого пристрою, не передаються та не продаються третім особам.
 
-## 3. Phone and Watch Communication
+### 5. Керування музикою та медіа-сесіями
+RoosterBeat взаємодіє з активною медіа-сесією на вашому Android-смартфоні для надсилання стандартних команд керування відтворенням (Play, Pause, Play/Pause Toggle, Next Track, Volume Up/Down).
+- Додаток **НЕ має доступу, НЕ збирає та НЕ зберігає** вашу музичну бібліотеку, плейлисти, історію прослуховувань чи дані облікових записів у музичних сервісах (Spotify, YouTube Music тощо).
 
-The phone app and the Wear OS app communicate with each other only to support music control and settings synchronization.
+### 6. Системні дозволи та спеціальні служби (Prominent Disclosure)
 
-The commands exchanged between the phone and watch may include actions such as:
+#### 🔔 Слухач сповіщень (`MusicNotificationListenerService`)
+- **Призначення**: Використовується на смартфоні виключно для виявлення факту активного відтворення аудіо медіаплеєрами, що дозволяє автоматично запускати або зупиняти моніторинг жестів.
+- **Обробка даних**: Сервіс перевіряє тільки статус активної медіа-сесії. Додаток **НЕ читає, НЕ аналізує, НЕ зберігає та НЕ передає** вміст ваших сповіщень, особистих повідомлень, імена контактів чи текст.
 
-* Play/Pause
-* Next track
-* Gesture settings
-* Calibration settings
+#### ♿ Служба спеціальних можливостей (`GlobalBezelVolumeAccessibilityService`)
+- **Призначення**: Використовується на годиннику Wear OS виключно для зчитування апаратних подій обертання фізичного безеля (`SOURCE_ROTARY_ENCODER`), що дозволяє регулювати гучність медіа на смартфоні з будь-якого екрана годинника.
+- **Обмеження та безпека**:
+  - Працює з параметром `canRetrieveWindowContent="false"`.
+  - Позначена як `isAccessibilityTool="false"`.
+  - Служба **НЕ має доступу і НЕ читає** вміст екрана, текстові поля, клавіатурний ввід чи особисті дані.
 
-These commands are used only for the functionality of the app.
+#### ⚙️ Фонові сервіси (`PhoneMusicControlForegroundService` та `GestureMonitorService`)
+- **Призначення**: Забезпечують стабільний фоновий моніторинг жестів та підтримку зв'язку під час відтворення музики.
+- **Індикатор**: Під час роботи у шторці відображається постійне системне сповіщення.
 
-## 4. Gesture Calibration Data
+### 7. Персональні дані
+RoosterBeat **ВЗАГАЛІ НЕ ЗБИРАЄ** такі персональні дані:
+- Ім'я та прізвище
+- Поштову адресу
+- Адресу електронної пошти
+- Номер телефону
+- Геолокацію
+- Контакти
+- Повідомлення
+- Фотографії та файли
+- Музичну бібліотеку
+- Платіжні дані
 
-The app may store gesture calibration settings locally on the device. These settings may include sensitivity, thresholds, timing values, and other configuration values required for gesture recognition.
+### 8. Реклама, аналітика та трекери
+- RoosterBeat **не містить реклами**.
+- RoosterBeat **не використовує аналітичні сервіси** (наприклад, Firebase Analytics чи Google Analytics).
+- RoosterBeat **не відстежує дій користувачів** у додатках чи на веб-сайтах.
 
-Calibration data is stored locally and is not sold, shared, or transmitted to external servers.
+### 9. Передача даних третім особам
+- RoosterBeat **не продає, не здає в оренду та не передає** будь-які дані третім особам.
+- Додаток не передає сирі дані датчиків на зовнішні сервери.
 
-## 5. Music Control
+### 10. Використання мережі Інтернет
+Якщо додаток використовує мережеві або комунікаційні функції, вони призначені виключно для прямого обміну даними між смартфоном та Wear OS пристроєм, або для відкриття сторінки Google Play Store при встановленні супутнього додатка. Додаток **не завантажує дані користувача або датчиків на віддалені сервери**.
 
-The app may interact with the active media session on your Android phone to control playback.
+### 11. Збереження та видалення даних
+Усі налаштування та дані калібрування зберігаються локально на смартфоні чи годиннику. Ви можете повністю видалити всі збережені дані, очистивши дані додатка в системних налаштуваннях Android або деінсталювавши додаток.
 
-This may include sending standard media commands such as:
+### 12. Конфіденційність дітей (Children's Privacy)
+RoosterBeat спеціально не призначений для дітей віком до 13 років. Додаток свідомо не збирає персональні дані від дітей.
 
-* Play
-* Pause
-* Play/Pause toggle
-* Next track
+### 13. Зміни до цієї Політики конфіденційності
+Ця Політика конфіденційності може періодично оновлюватися. Усі зміни відображаються оновленням дати набрання чинності на початку цього документа.
 
-The app does not access, collect, or store your music library, playlists, listening history, or account information from music services.
+---
 
-## 6. Personal Data
+## 📬 Контакти / Contact Information
 
-RoosterBeat does not collect personal information such as:
+З будь-якими питаннями або пропозиціями щодо цієї Політики конфіденційності звертайтеся за наступними контактами /
+If you have any questions about this Privacy Policy, please contact:
 
-* Name
-* Address
-* Email address
-* Phone number
-* Location
-* Contacts
-* Messages
-* Photos
-* Music library
-* Payment information
-
-## 7. Advertising and Analytics
-
-RoosterBeat does not include advertising.
-
-RoosterBeat does not use analytics services.
-
-RoosterBeat does not track users across apps or websites.
-
-## 8. Data Sharing
-
-RoosterBeat does not sell, rent, or share personal data with third parties.
-
-The app does not transmit raw smartwatch sensor data to external servers.
-
-## 9. Internet and Network Use
-
-If the app uses network or communication features, they are used only for communication between the phone and the Wear OS device or for opening the Google Play Store page when installing the companion app.
-
-The app does not upload user sensor data or personal data to a remote server.
-
-## 10. Data Storage
-
-Settings and calibration data may be stored locally on the phone or smartwatch.
-
-Users can remove locally stored app data by uninstalling the app or clearing app data through Android system settings.
-
-## 11. Children’s Privacy
-
-RoosterBeat is not specifically directed at children.
-
-The app does not knowingly collect personal data from children.
-
-## 12. Changes to This Privacy Policy
-
-This Privacy Policy may be updated from time to time. Any changes will be reflected by updating the effective date at the top of this document.
-
-## 13. Contact
-
-If you have any questions about this Privacy Policy, contact:
-
-[s.v.torovus@gmail.com](mailto:s.v.torovus@gmail.com)
+- **Розробник / Developer:** Grey
+- **E-mail:** [s.v.torovus@gmail.com](mailto:s.v.torovus@gmail.com)
+- **Телефон / Phone:** +380509189797
